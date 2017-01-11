@@ -1,0 +1,36 @@
+*{
+	box-sizing:border-box;
+	margin:0;
+	padding:0;
+}
+body{
+	font-family:"Î¢ÈíÑÅºÚ";
+	font-size:14px;
+	color:#333;
+}
+ul,li{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+}
+button{
+	padding:6px 16px;
+	text-shadow:none;
+	border:none;
+	color:#fff;
+	background:#66ccff;
+	font-size:12px;
+	margin-top:-10px;
+	margin-left:10px;
+}
+input, textarea, .uneditable-input {
+    width: 130px;
+    height:30px!important;
+}
+.margin-top{
+	margin-top:20px;
+}
+.border-bot{
+	border-bottom:1px dashed #ccc;
+}

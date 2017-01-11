@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+">  
+	<context:annotation-config />  
+    <context:component-scan base-package="com.glufine" />  
+	<import resource="classpath:mybatis-config.xml"/>
+	<import resource="classpath:spring-mybatis.xml"/>
+
+	<bean id="boxMessageSend" class="com.glufine.message.impl.BoxMessageSend"/>
+	<bean id="boxMessageDegelate" class="com.glufine.message.impl.BoxMessageMessageDegelate"/>
+	<bean id="logSearch" class="com.glufine.message.impl.LogSearch"/>
+<!--	<import resource="classpath:spring-mq.xml"/>-->
+</beans> 

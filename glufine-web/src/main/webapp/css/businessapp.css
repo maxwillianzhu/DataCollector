@@ -1,0 +1,56 @@
+*{
+	box-sizing:border-box;
+	margin:0;
+	padding:0;
+}
+body{
+	font-family:"Î¢ÈíÑÅºÚ";
+	font-size:14px;
+	color:#333;
+}
+ul,li{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+}
+#box{
+	padding:50px;
+}
+input[type="password"],input[type="text"]{
+	height:30px;
+}
+button{
+	padding:6px 16px;
+	text-shadow:none;
+	border:none;
+	color:#fff;
+	background:#66ccff;
+	font-size:12px;
+	margin-top:-10px;
+	margin-left:10px;
+}
+.business{
+	margin-top:20px;
+}
+#sure{
+	margin-top:30px;
+}
+select {
+    width: 130px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+input, textarea, .uneditable-input {
+    width: 130px;
+}
+.bor-bot{
+	margin-top:20px;
+	border:1px solid #f3f3f3;
+}
+.table tr th,.table tr td{
+	text-align:center;
+}
+.show{
+	margin-top:20px;
+}

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.glufine.dao.PressureMapper" >
+  <resultMap id="BaseResultMap" type="com.glufine.entity.Pressure" >
+    <id column="prssure_id" property="prssureId" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="high" property="high" jdbcType="INTEGER" />
+    <result column="down" property="down" jdbcType="INTEGER" />
+    <result column="heartbeat" property="heartbeat" jdbcType="INTEGER" />
+    <result column="year" property="year" jdbcType="CHAR" />
+    <result column="month" property="month" jdbcType="CHAR" />
+    <result column="day" property="day" jdbcType="CHAR" />
+    <result column="houre" property="houre" jdbcType="CHAR" />
+    <result column="minute" property="minute" jdbcType="CHAR" />
+    <result column="date_key" property="dateKey" jdbcType="CHAR" />
+    <result column="time_key" property="timeKey" jdbcType="CHAR" />
+    <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="test_time" property="testTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    prssure_id, number, high, down, heartbeat, year, month, day, houre, minute, date_key, 
+    time_key, creat_time, test_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pressure
+    where prssure_id = #{prssureId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pressure
+    where prssure_id = #{prssureId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.glufine.entity.Pressure" >
+    insert into pressure (prssure_id, number, high, 
+      down, heartbeat, year, 
+      month, day, houre, minute, 
+      date_key, time_key, creat_time, 
+      test_time)
+    values (#{prssureId,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, #{high,jdbcType=INTEGER}, 
+      #{down,jdbcType=INTEGER}, #{heartbeat,jdbcType=INTEGER}, #{year,jdbcType=CHAR}, 
+      #{month,jdbcType=CHAR}, #{day,jdbcType=CHAR}, #{houre,jdbcType=CHAR}, #{minute,jdbcType=CHAR}, 
+      #{dateKey,jdbcType=CHAR}, #{timeKey,jdbcType=CHAR}, #{creatTime,jdbcType=TIMESTAMP}, 
+      #{testTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.glufine.entity.Pressure" >
+    insert into pressure
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prssureId != null" >
+        prssure_id,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="high != null" >
+        high,
+      </if>
+      <if test="down != null" >
+        down,
+      </if>
+      <if test="heartbeat != null" >
+        heartbeat,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="month != null" >
+        month,
+      </if>
+      <if test="day != null" >
+        day,
+      </if>
+      <if test="houre != null" >
+        houre,
+      </if>
+      <if test="minute != null" >
+        minute,
+      </if>
+      <if test="dateKey != null" >
+        date_key,
+      </if>
+      <if test="timeKey != null" >
+        time_key,
+      </if>
+      <if test="creatTime != null" >
+        creat_time,
+      </if>
+      <if test="testTime != null" >
+        test_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prssureId != null" >
+        #{prssureId,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="high != null" >
+        #{high,jdbcType=INTEGER},
+      </if>
+      <if test="down != null" >
+        #{down,jdbcType=INTEGER},
+      </if>
+      <if test="heartbeat != null" >
+        #{heartbeat,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=CHAR},
+      </if>
+      <if test="month != null" >
+        #{month,jdbcType=CHAR},
+      </if>
+      <if test="day != null" >
+        #{day,jdbcType=CHAR},
+      </if>
+      <if test="houre != null" >
+        #{houre,jdbcType=CHAR},
+      </if>
+      <if test="minute != null" >
+        #{minute,jdbcType=CHAR},
+      </if>
+      <if test="dateKey != null" >
+        #{dateKey,jdbcType=CHAR},
+      </if>
+      <if test="timeKey != null" >
+        #{timeKey,jdbcType=CHAR},
+      </if>
+      <if test="creatTime != null" >
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="testTime != null" >
+        #{testTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.glufine.entity.Pressure" >
+    update pressure
+    <set >
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="high != null" >
+        high = #{high,jdbcType=INTEGER},
+      </if>
+      <if test="down != null" >
+        down = #{down,jdbcType=INTEGER},
+      </if>
+      <if test="heartbeat != null" >
+        heartbeat = #{heartbeat,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=CHAR},
+      </if>
+      <if test="month != null" >
+        month = #{month,jdbcType=CHAR},
+      </if>
+      <if test="day != null" >
+        day = #{day,jdbcType=CHAR},
+      </if>
+      <if test="houre != null" >
+        houre = #{houre,jdbcType=CHAR},
+      </if>
+      <if test="minute != null" >
+        minute = #{minute,jdbcType=CHAR},
+      </if>
+      <if test="dateKey != null" >
+        date_key = #{dateKey,jdbcType=CHAR},
+      </if>
+      <if test="timeKey != null" >
+        time_key = #{timeKey,jdbcType=CHAR},
+      </if>
+      <if test="creatTime != null" >
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="testTime != null" >
+        test_time = #{testTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where prssure_id = #{prssureId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.glufine.entity.Pressure" >
+    update pressure
+    set number = #{number,jdbcType=VARCHAR},
+      high = #{high,jdbcType=INTEGER},
+      down = #{down,jdbcType=INTEGER},
+      heartbeat = #{heartbeat,jdbcType=INTEGER},
+      year = #{year,jdbcType=CHAR},
+      month = #{month,jdbcType=CHAR},
+      day = #{day,jdbcType=CHAR},
+      houre = #{houre,jdbcType=CHAR},
+      minute = #{minute,jdbcType=CHAR},
+      date_key = #{dateKey,jdbcType=CHAR},
+      time_key = #{timeKey,jdbcType=CHAR},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      test_time = #{testTime,jdbcType=TIMESTAMP}
+    where prssure_id = #{prssureId,jdbcType=INTEGER}
+  </update>
+</mapper>

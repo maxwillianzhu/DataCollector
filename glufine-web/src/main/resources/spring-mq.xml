@@ -1,0 +1,44 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+	http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+	<!-- 定义RabbitMQ的连接工厂 -->
+	<rabbit:connection-factory id="connectionFactory"
+		host="127.0.0.1" port="5672" username="derivice" password="glufine103"
+		virtual-host="/derivice" />
+		
+  	<rabbit:template id="rabbitTemplate" connection-factory="connectionFactory" exchange="topicExchanage"/>
+  	
+  	<!-- 对外消息推送系统 -->
+  	<rabbit:queue name="messageSendQueue" auto-declare="true"/>
+  	<!-- 日志系统 -->
+  	<rabbit:queue name="logSearchQueue" auto-declare="true"/>
+  	<!-- 消息解析 -->
+  	<rabbit:queue name="messageDegeleteQuery" auto-declare="true"/>
+  	
+  	<!-- 定义交换机 -->
+  	<rabbit:topic-exchange name="topicExchanage" auto-declare="true">
+  		<rabbit:bindings>
+  			<!-- 前台系统绑定 -->
+			<rabbit:binding pattern="boxMessage.#" queue="messageSendQueue"/>  
+			
+			<rabbit:binding pattern="messageDegelete.#" queue="messageDegeleteQuery"/>  
+			<!-- 搜索系统绑定 -->
+			<rabbit:binding pattern="log.#" queue="logSearchQueue"/>	
+  		</rabbit:bindings>
+  	</rabbit:topic-exchange>
+  	
+  	<bean id="boxMessageSend" class="com.glufine.message.impl.BoxMessageSend"/>
+  	<bean id="boxMessageDegelate" class="com.glufine.message.impl.BoxMessageMessageDegelate"/>
+  	<bean id="logSearch" class="com.glufine.message.impl.LogSearch"/>
+  	
+  	<!-- 定义队列监听 -->
+  	<rabbit:listener-container connection-factory="connectionFactory">
+  		<rabbit:listener ref="boxMessageSend" method="doListen" queues="messageSendQueue"/>
+  		<rabbit:listener ref="logSearch" method="doListen" queues="logSearchQueue"/>
+  		<rabbit:listener ref="boxMessageDegelate" method="doListen" queues="messageDegeleteQuery"/>
+  	</rabbit:listener-container>
+</beans>
